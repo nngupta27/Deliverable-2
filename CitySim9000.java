@@ -24,81 +24,31 @@ public class CitySim9000 extends Node
 			return;
 		}
 		
+		Random num = new Random();	// this will get a random number between 0 - 4
+		num.setSeed(Integer.parseInt(args[0]));
+		
 		for(int i = 0; i < 5; i++)
 		{
-			int location, route_location;
+			int location;
 			String place, place2;
-			Random num = new Random();	// this will get a random number between 0 - 4
-			location = num.nextInt(5);
+			
+			location = num.nextInt(6);	// starting point
 			
 			do
 			{
-				Node current_location = new Node(location);
+				Node current = new Node(location);		// initializes the Node with location
 				
-				if(location == 0)
-				{
-					place = "Mall";
-				}
-				else if(location == 1)
-				{
-					place = "Bookstore";
-				}
-				else if(location == 2)
-				{
-					place = "Outside the city";		// outside Fourth
-				}
-				else if(location == 3)
-				{
-					place = "University";
-				}
-				else if(location == 4)
-				{
-					place = "Coffee";
-				}
-				else if(location == 5)
-				{
-					place = "Outside the city";		// outside Fifth
-				} 
-				else
-				{
-					place = "Error choosing location.";
-				}
+				place = current.whereAmI(location);		// returns string of current location
 				
-				location = num.nextInt(2);
-				current_location = current_location.goToNext(location);
+				location = num.nextInt(2);				// determines which route you will take
+				current = current.goToNext(location);	// changes your current to the next location
+				location = current.cur_loc;				// updates location to current location
 				
-				location = current_location.cur_loc;
-				if(location == 0)
-				{
-					place2 = "Mall";
-				}
-				else if(location == 1)
-				{
-					place2 = "Bookstore";
-				}
-				else if(location == 2)
-				{
-					place2 = "Outside the city";	// outside Fourth
-				}
-				else if(location == 3)
-				{
-					place2 = "University";
-				}
-				else if(location == 4)
-				{
-					place2 = "Coffee";
-				}
-				else if(location == 5)
-				{
-					place2 = "Outside the city";	// outside Fifth
-				} 
-				else
-				{
-					place2 = "Error choosing destination.";
-				}
-				
-				System.out.println("Driver " + i + " heading from " + place + " to " + place2 + " " + current_location.route_chosen);
-			} 	while(location != 2 && location != 5);
+				place2 = current.whereAmI(location);
+			
+				System.out.println("Driver " + i + " heading from " + place + " to " + place2 + " " + current.route_chosen);
+			
+			} while (location != 2 && location != 5);	// location != outside the city on fourth or fifth ave
 			
 			System.out.println("Driver " + i + " has left the city!");
 			System.out.println("-------------------------");

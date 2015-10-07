@@ -42,6 +42,38 @@ public class Node
 		return this;
 	}
 	
+	public String whereAmI (int location)
+	{
+		if(location == 0)
+		{
+			return "Mall";
+		}
+		else if(location == 1)
+		{
+			return "Bookstore";
+		}
+		else if(location == 2)
+		{
+			return "Outside the city";		// outside Fourth
+		}
+		else if(location == 3)
+		{
+			return "University";
+		}
+		else if(location == 4)
+		{
+			return "Coffee";
+		}
+		else if(location == 5)
+		{
+			return "Outside the city";		// outside Fifth
+		} 
+		else
+		{
+			return "Error choosing location.";
+		}
+	}
+	
 	// this sets up the routes that are available
 	private Node setUpRoutes (int current)
 	{
@@ -133,8 +165,7 @@ public class Node
 		}
 		else
 		{
-			return "";
-			//return (destination + "    " + cur_loc);
+			return "Error determining route";
 		}
 	}
 
