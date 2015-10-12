@@ -4,8 +4,8 @@ import java.util.*;
 public class Driver
 {
 	
-	private int current_location;
-	private int end_location;
+	int current_location;
+	int end_location;
 	
 	public Driver() 
 	{

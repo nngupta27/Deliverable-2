@@ -39,27 +39,56 @@ public class CitySim9000Test {
 			//assertEquals();
 		}
 		
-		// This test tests to make sure that when 
+		// This test tests to make sure that when a CityMap object is initialized with a starting location
+		// of 0, it returns the correct first route, 4
 		// This tests doubles
+		@Test
+		public void testCityMap_getRoute1(){
+			Driver mockedCar = Mockito.mock(Driver.class);
+			CityMap map = new CityMap(mockedCar, 0);
+			int ret_val = map.getRoute1();
+			assertEquals(4, ret_val);
+		}
+		
+		// This test tests to make sure that when a CityMap object is initialized with a starting location
+		// of 0, it returns the correct second route, 1
+		// This tests doubles
+		@Test
+		public void testCityMap_getRoute2(){
+			Driver mockedCar = Mockito.mock(Driver.class);
+			CityMap map = new CityMap(mockedCar, 0);
+			int ret_val = map.getRoute2();
+			assertEquals(1, ret_val);			
+		}
+		
+		// This test tests to make sure that when a new Driver object is created, the current and end 
+		// locations are initialized correctly.
 		@Test
 		public void testDriver_Driver(){
 			Driver car = new Driver();
 			assertFalse(car.getCurrentLocation() != 6 && car.getEndLocation() != 6);
 		}
 		
+		// This test tests to make sure that the method ".goToNext()" returns correctly
+		// This tests stubbing
 		@Test
 		public void testDriver_goToNext(){
 			Driver car = new Driver();
 			CityMap mockedMap = Mockito.mock(CityMap.class);
-			int ret_val = car.goToNext(mockedMap, 1);	
-			assertFalse(ret_val == 10);
+			//mockedMap.when(car.goToNext(mockedMap, 0)).thenReturn(0);
+			int ret_val = car.goToNext(mockedMap, 0);
+			assertEquals(0, ret_val);
 		}
 		
+		// This test tests to make sure that the method ".getCurrentLocation()" returns correctly
+		// This tests stubbing
 		@Test
 		public void testDriver_getCurrentLocation(){
 			Driver car = new Driver();
-			car.setCurrentLocation(5);
-			assertFalse(car.getCurrentLocation() != 5);	
+			CityMap mockedMap = Mockito.mock(CityMap.class);
+			//mockedMap.when(car.getCurrentLocation()).thenReturn(6);
+			int ret_val = car.getCurrentLocation();
+			assertEquals(6, ret_val);	
 		}
 		
 	}
