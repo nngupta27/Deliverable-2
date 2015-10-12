@@ -9,7 +9,8 @@ public class Driver
 	
 	public Driver() 
 	{
-		// do nothing
+		current_location = 6;
+		end_location = 6;
 	}
 	
 	public int goToNext(CityMap map, int rand)

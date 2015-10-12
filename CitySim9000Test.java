@@ -44,7 +44,7 @@ public class CitySim9000Test {
 		@Test
 		public void testDriver_Driver(){
 			Driver car = new Driver();
-			assertFalse(car.getCurrentLocation() == 6 && car.getEndLocation() == 6);
+			assertFalse(car.getCurrentLocation() != 6 && car.getEndLocation() != 6);
 		}
 		
 		@Test
