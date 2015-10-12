@@ -148,11 +148,12 @@ public class CitySim9000Test {
 		@Test
 		public void testCityMap_getPlace() {
 			Driver mockedCar = Mockito.mock(Driver.class);
-			// mockedCar.when(mockedCar.getCurrentLocation()).thenReturn(0);
-			CityMap map = new CityMap(mockedCar, 0);
-			String test = map.getPlace(mockedCar, 0);
-			//assertEquals();
+			when(mockedCar.getCurrentLocation()).thenReturn(1);
+			CityMap map = new CityMap(mockedCar, 1);
+			String returnVal = map.getPlace(mockedCar, 1);
+			assertEquals(returnVal, "Bookstore");
 		}
+		
 		
 		// This test tests to make sure that when a CityMap object is initialized with a starting location
 		// of 0, it returns the correct first route, 4
@@ -190,7 +191,7 @@ public class CitySim9000Test {
 		public void testDriver_goToNext_0(){
 			Driver car = new Driver();
 			CityMap mockedMap = Mockito.mock(CityMap.class);
-			//mockedMap.when(car.goToNext(mockedMap, 0)).thenReturn(0);
+			when(car.goToNext(mockedMap, 0)).thenReturn(0);
 			int ret_val = car.goToNext(mockedMap, 0);
 			assertEquals(0, ret_val);
 		}
@@ -198,7 +199,7 @@ public class CitySim9000Test {
 		public void testDriver_goToNext_1(){
 			Driver car = new Driver();
 			CityMap mockedMap = Mockito.mock(CityMap.class);
-			//mockedMap.when(car.goToNext(mockedMap, 1)).thenReturn(0);
+			when(car.goToNext(mockedMap, 1)).thenReturn(0);
 			int ret_val = car.goToNext(mockedMap, 1);
 			assertEquals(0, ret_val);
 		}
