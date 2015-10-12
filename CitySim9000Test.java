@@ -21,38 +21,45 @@ public class CitySim9000Test {
 		// This tests doubles
 		@Test
 		public void testCityMap_getRouteName() {
-			Driver car = new Driver();
-			CityMap mockedMap = Mockito.mock(CityMap.class);
-			mockedMap = new CityMap(car, 0);
-			String test = mockedMap.getRouteName(car, 0, 1);
+			Driver mockedCar = Mockito.mock(Driver.class);
+			CityMap map = new CityMap(mockedCar, 0);
+			String test = map.getRouteName(mockedCar, 0, 1);
 			assertFalse(test == null);
 		}
 		
 		// This test tests to make sure that when a driver and location 0
 		// are passed into the getPlace method, a valid String with the name of the location
-		// This tests doubles
+		// This tests stubbing
 		@Test
 		public void testCityMap_getPlace() {
-			Driver car = Mockito.mock(Driver.class);
-			//car.when(car.getLocation()).thenReturn(2);
-			CityMap map = new CityMap(car, 1);
-			
+			Driver mockedCar = Mockito.mock(Driver.class);
+			// mockedCar.when(mockedCar.getCurrentLocation()).thenReturn(0);
+			CityMap map = new CityMap(mockedCar, 0);
+			String test = map.getPlace(mockedCar, 0);
+			//assertEquals();
 		}
 		
 		// This test tests to make sure that when 
-		
+		// This tests doubles
 		@Test
 		public void testDriver_Driver(){
-			Driver mockedCar = Mockito.mock(Driver.class);
-			assertFalse(mockedCar.current_location == 6);
+			Driver car = new Driver();
+			assertFalse(car.getCurrentLocation() == 6 && car.getEndLocation() == 6);
 		}
 		
 		@Test
 		public void testDriver_goToNext(){
-			Driver mockedCar = Mockito.mock(Driver.class);
-			CityMap map = new CityMap(mockedCar, 0);
-			int ret_val = mockedCar.goToNext(map, 1);	
+			Driver car = new Driver();
+			CityMap mockedMap = Mockito.mock(CityMap.class);
+			int ret_val = car.goToNext(mockedMap, 1);	
 			assertFalse(ret_val == 10);
+		}
+		
+		@Test
+		public void testDriver_getCurrentLocation(){
+			Driver car = new Driver();
+			car.setCurrentLocation(5);
+			assertFalse(car.getCurrentLocation() != 5);	
 		}
 		
 	}

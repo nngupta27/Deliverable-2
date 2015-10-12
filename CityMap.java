@@ -55,19 +55,19 @@ public class CityMap
 		driver.setCurrentLocation(start);
 		driver.setEndLocation(end);
 		
-		if((driver.getCurrentLocation() == 0 && driver.getEndLocation() == 1) || (driver.getCurrentLocation() == 1 && driver.getEndLocation() == 2) || (driver.getCurrentLocation() == 2 && driver.getEndLocation() == 0) || (driver.getCurrentLocation() == 5 && driver.getEndLocation() == 0))
+		if((start == 0 && end == 1) || (start == 1 && end == 2) || (start == 2 && end == 0) || (start == 5 && end == 0))
 		{
 			return "via Fourth Ave";
 		}
-		else if ((driver.getCurrentLocation() == 2 && driver.getEndLocation() == 3) || (driver.getCurrentLocation() == 3 && driver.getEndLocation() == 4) || (driver.getCurrentLocation() == 4 && driver.getEndLocation() == 5) || (driver.getCurrentLocation() == 5 && driver.getEndLocation() == 3))
+		else if ((start == 2 && end == 3) || (start == 3 && end == 4) || (start == 4 && end == 5) || (start == 5 && end == 3))
 		{
 			return "via Fifth Ave";
 		}
-		else if ((driver.getCurrentLocation() == 0 && driver.getEndLocation() == 4) || (driver.getCurrentLocation() == 4 && driver.getEndLocation() == 0))
+		else if ((start == 0 && end == 4) || (start == 4 && end == 0))
 		{
 			return "via Meow St.";
 		}
-		else if ((driver.getCurrentLocation() == 1 && driver.getEndLocation() == 3) || (driver.getCurrentLocation() == 3 && driver.getEndLocation() == 1))
+		else if ((start == 1 && end == 3) || (start == 3 && end == 1))
 		{
 			return "via Chirp St.";
 		}
