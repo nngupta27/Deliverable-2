@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 import java.util.Random;
 
-public class CitySim9000 extends Node
+public class CitySim9000
 {	
 	public static void main(String [] args) throws Exception
 	{
@@ -27,31 +27,31 @@ public class CitySim9000 extends Node
 		Random num = new Random();	// this will get a random number between 0 - 4
 		num.setSeed(Integer.parseInt(args[0]));
 		
+		int location = num.nextInt(6);
+		
+		// makes the city map and driver
+		Driver car = new Driver();
+		CityMap map = new CityMap(car, location);
+		
+		int start, end;
+		
 		for(int i = 0; i < 5; i++)
 		{
-			int location;
-			String place, place2;
-			
-			location = num.nextInt(6);	// starting point
-			
 			do
 			{
-				Node current = new Node(location);		// initializes the Node with location
+				int coin =  num.nextInt(2);
+				start = location;
+				end = car.goToNext(map, coin);
 				
-				place = current.whereAmI(location);		// returns string of current location
+				System.out.println("Driver " + i + " heading from " + map.getPlace(car, start) + " to " + map.getPlace(car, end) + " " + map.getRouteName(car, start, end));
+				location = end;
+				map = new CityMap(car, location);
 				
-				location = num.nextInt(2);				// determines which route you will take
-				current = current.goToNext(location);	// changes your current to the next location
-				location = current.cur_loc;				// updates location to current location
-				
-				place2 = current.whereAmI(location);
-			
-				System.out.println("Driver " + i + " heading from " + place + " to " + place2 + " " + current.route_chosen);
-			
-			} while (location != 2 && location != 5);	// location != outside the city on fourth or fifth ave
-			
-			System.out.println("Driver " + i + " has left the city!");
-			System.out.println("-------------------------");
+			} while (location != 2 && location != 5);
+			System.out.println("---------------------------");
+			location = num.nextInt(6);
+			map = new CityMap(car, location);
 		}
+		
 	}
 }
