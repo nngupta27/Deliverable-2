@@ -42,7 +42,7 @@ public class CitySim9000
 				int coin =  num.nextInt(2);
 				start = location;
 				end = car.goToNext(map, coin);
-				
+				car.setCurrentLocation(end);
 				System.out.println("Driver " + i + " heading from " + map.getPlace(car, start) + " to " + map.getPlace(car, end) + " " + map.getRouteName(car, start, end));
 				location = end;
 				map = new CityMap(car, location);
